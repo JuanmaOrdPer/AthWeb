@@ -1,0 +1,737 @@
+/* src/styles/components/_race-cards.css */
+/* Contenedor principal de las tarjetas de carreras */
+.races-container {
+  padding: 3rem 0;
+  background-color: var(--color-light);
+}
+
+/* Encabezado de la sección */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  
+  .section-subtitle {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1rem;
+      height: 2px;
+      background-color: var(--color-primary);
+    }
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+    
+    span {
+      color: var(--color-primary);
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 10px;
+        background-color: rgba(255, 87, 34, 0.2);
+        z-index: -1;
+      }
+    }
+  }
+  
+  .section-description {
+    max-width: 700px;
+    margin: 0 auto 1.5rem;
+    color: var(--color-gray-dark);
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+}
+
+/* Grid de tarjetas */
+.races-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  
+  @media (min-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Tarjeta de carrera */
+.race-card {
+  background-color: white;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    
+    .race-image img {
+      transform: scale(1.05);
+    }
+    
+    .race-title {
+      color: var(--color-primary);
+    }
+  }
+  
+  /* Estado de destacado */
+  &.featured {
+    border-left: 4px solid var(--color-primary);
+    
+    &::before {
+      content: 'Destacada';
+      position: absolute;
+      top: 1rem;
+      right: -2rem;
+      background-color: var(--color-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 2rem;
+      transform: rotate(45deg);
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+  
+  /* Imagen de la carrera */
+  .race-image {
+    position: relative;
+    overflow: hidden;
+    height: 180px;
+    
+    @media (min-width: 768px) {
+      height: 200px;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    /* Badge de categoría */
+    .category-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: var(--color-primary);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 1;
+      
+      /* Colores de categorías */
+      &.category-5k { background-color: #4caf50; }
+      &.category-10k { background-color: #2196f3; }
+      &.category-21k { background-color: #ff9800; }
+      &.category-42k { background-color: #f44336; }
+      &.category-trail { background-color: #795548; }
+      &.category-urban { background-color: #9c27b0; }
+    }
+    
+    /* Fecha de la carrera */
+    .race-date {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      
+      i {
+        margin-right: 0.35rem;
+        font-size: 0.9em;
+      }
+    }
+    
+    /* Contador regresivo */
+    .countdown {
+      position: absolute;
+      bottom: 1rem;
+      right: 1rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      
+      i {
+        margin-right: 0.35rem;
+        font-size: 0.9em;
+      }
+    }
+  }
+  
+  /* Contenido de la tarjeta */
+  .race-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    
+    /* Cabecera de la tarjeta */
+    .race-header {
+      margin-bottom: 0.75rem;
+      
+      .race-location {
+        display: flex;
+        align-items: center;
+        font-size: 0.875rem;
+        color: var(--color-gray);
+        margin-bottom: 0.5rem;
+        
+        i {
+          margin-right: 0.5rem;
+          color: var(--color-primary);
+        }
+      }
+      
+      .race-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--color-dark);
+        margin: 0 0 0.5rem;
+        transition: color 0.3s ease;
+        line-height: 1.4;
+        
+        a {
+          color: inherit;
+          text-decoration: none;
+          
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+      
+      .race-organizer {
+        font-size: 0.875rem;
+        color: var(--color-gray);
+        margin-bottom: 0.75rem;
+        
+        span {
+          color: var(--color-primary);
+          font-weight: 500;
+        }
+      }
+    }
+    
+    /* Detalles de la carrera */
+    .race-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      
+      .detail-item {
+        display: flex;
+        align-items: center;
+        
+        .detail-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          background-color: rgba(255, 87, 34, 0.1);
+          border-radius: 50%;
+          color: var(--color-primary);
+          margin-right: 0.75rem;
+          flex-shrink: 0;
+          
+          i {
+            font-size: 1rem;
+          }
+        }
+        
+        .detail-content {
+          .detail-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--color-gray);
+            margin-bottom: 0.15rem;
+          }
+          
+          .detail-value {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            line-height: 1.2;
+            
+            &.price {
+              color: var(--color-primary);
+              font-size: 1.1rem;
+              font-weight: 700;
+              
+              .original-price {
+                font-size: 0.8125rem;
+                color: var(--color-gray);
+                text-decoration: line-through;
+                margin-right: 0.35rem;
+              }
+              
+              .discount {
+                font-size: 0.75rem;
+                font-weight: 600;
+                background-color: #ffebee;
+                color: #f44336;
+                padding: 0.15rem 0.4rem;
+                border-radius: 4px;
+                margin-left: 0.5rem;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    /* Pie de la tarjeta */
+    .race-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .participants {
+        display: flex;
+        align-items: center;
+        font-size: 0.8125rem;
+        color: var(--color-gray);
+        
+        .participants-avatars {
+          display: flex;
+          margin-right: 0.75rem;
+          
+          .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid white;
+            margin-right: -8px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--color-gray);
+            
+            &:last-child {
+              margin-right: 0;
+            }
+            
+            &.more {
+              background-color: var(--color-light);
+            }
+          }
+        }
+      }
+      
+      .btn-race-details {
+        padding: 0.5rem 1.25rem;
+        background-color: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        
+        &:hover {
+          background-color: var(--color-primary-dark);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(255, 87, 34, 0.2);
+        }
+        
+        i {
+          margin-left: 0.5rem;
+          font-size: 0.9em;
+          transition: transform 0.3s ease;
+        }
+        
+        &:hover i {
+          transform: translateX(3px);
+        }
+      }
+    }
+  }
+  
+  /* Estado de la carrera */
+  .race-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+    
+    &.status-upcoming {
+      background-color: #e3f2fd;
+      color: #1976d2;
+    }
+    
+    &.status-ongoing {
+      background-color: #fff8e1;
+      color: #ff8f00;
+    }
+    
+    &.status-completed {
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+    
+    &.status-cancelled {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+  }
+}
+
+/* Estilos para el modo lista */
+.races-list {
+  .race-card {
+    flex-direction: row;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+    
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
+    
+    .race-image {
+      width: 300px;
+      height: auto;
+      border-radius: var(--border-radius-lg) 0 0 var(--border-radius-lg);
+      
+      @media (max-width: 991px) {
+        width: 250px;
+      }
+      
+      @media (max-width: 767px) {
+        width: 100%;
+        height: 200px;
+        border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+      }
+    }
+    
+    .race-content {
+      flex: 1;
+      padding: 1.5rem;
+      
+      .race-header {
+        display: flex;
+        flex-direction: column;
+        
+        @media (min-width: 768px) {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+        
+        .race-header-left {
+          flex: 1;
+          margin-bottom: 1rem;
+          
+          @media (min-width: 768px) {
+            margin-bottom: 0;
+            padding-right: 1.5rem;
+          }
+        }
+        
+        .race-header-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          
+          .race-date-large {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            text-align: right;
+            
+            .month {
+              display: block;
+              font-size: 1rem;
+              font-weight: 500;
+              color: var(--color-gray);
+              text-transform: uppercase;
+              letter-spacing: 1px;
+            }
+          }
+          
+          .race-status {
+            position: static;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+      
+      .race-details {
+        grid-template-columns: repeat(4, 1fr);
+        
+        @media (max-width: 1199px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        
+        @media (max-width: 575px) {
+          grid-template-columns: 1fr;
+        }
+      }
+      
+      .race-description {
+        margin: 1rem 0;
+        color: var(--color-gray-dark);
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  
+  .pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: var(--border-radius);
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    
+    .page-item {
+      margin: 0;
+      
+      &:not(:last-child) {
+        border-right: 1px solid var(--border-color);
+      }
+      
+      &.active .page-link {
+        background-color: var(--color-primary);
+        color: white;
+        border-color: var(--color-primary);
+      }
+      
+      &.disabled .page-link {
+        color: var(--color-gray-light);
+        pointer-events: none;
+        background-color: #f8f9fa;
+      }
+      
+      .page-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 45px;
+        height: 45px;
+        padding: 0 0.75rem;
+        color: var(--color-dark);
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        border: none;
+        background: none;
+        cursor: pointer;
+        
+        &:hover:not(.active) {
+          background-color: #f8f9fa;
+          color: var(--color-primary);
+        }
+        
+        i {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+}
+
+/* Mensaje cuando no hay carreras */
+.no-races-message {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  
+  i {
+    font-size: 3rem;
+    color: var(--color-gray-light);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 0.75rem;
+  }
+  
+  p {
+    color: var(--color-gray);
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.75rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255, 87, 34, 0.2);
+    }
+    
+    i {
+      font-size: 1.1em;
+      margin-right: 0.5rem;
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+  .race-card {
+    background-color: var(--color-dark-light);
+    
+    .race-title,
+    .detail-value:not(.price) {
+      color: white;
+    }
+    
+    .race-location,
+    .race-organizer,
+    .detail-label,
+    .detail-value.original-price {
+      color: var(--color-gray-light);
+    }
+    
+    .race-details {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .participants .participants-avatars .avatar {
+      border-color: var(--color-dark-light);
+      background-color: var(--color-dark-lighter);
+    }
+  }
+  
+  .pagination {
+    background-color: var(--color-dark-light);
+    
+    .page-item {
+      border-color: rgba(255, 255, 255, 0.1);
+      
+      .page-link {
+        color: var(--color-gray-light);
+        
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.05);
+        }
+      }
+      
+      &.disabled .page-link {
+        background-color: var(--color-dark-lighter);
+        color: var(--color-gray);
+      }
+    }
+  }
+  
+  .no-races-message {
+    background-color: var(--color-dark-light);
+    
+    h3 {
+      color: white;
+    }
+    
+    i {
+      color: var(--color-gray);
+    }
+  }
+}

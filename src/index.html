@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atletismo Mundial - Próximas Carreras Populares</title>
+    
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    
+    <!-- Preload de fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="/">Athletic World</a>
+                </div>
+                <div class="menu-toggle" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#proximas-carreras" class="nav-link">Carreras</a></li>
+                    <li><a href="#como-funciona" class="nav-link">¿Cómo Funciona?</a></li>
+                    <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main>
+        <section id="hero" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Descubre las Mejores Carreras Populares de España</h1>
+                    <p>Tu portal de referencia para encontrar e inscribirte en las próximas competiciones de atletismo por toda España</p>
+                    <div class="hero-buttons">
+                        <a href="#proximas-carreras" class="btn btn-primary">Ver Próximas Carreras</a>
+                        <a href="#como-funciona" class="btn btn-secondary">¿Cómo Funciona?</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="proximas-carreras" class="section">
+            <div class="container">
+                <h2 class="section-title">Próximas Carreras Populares</h2>
+                <p class="section-description">Encuentra las mejores carreras populares de atletismo en España para los próximos meses. Desde carreras urbanas de 5K y 10K hasta maratones y trail running, aquí encontrarás toda la información necesaria para planificar tu calendario deportivo.</p>
+                
+                <!-- Filtros -->
+                <div id="filters-container" class="filters-container">
+                    <!-- Los filtros se cargarán dinámicamente -->
+                </div>
+                
+                <!-- Loader -->
+                <div id="loader" class="loader" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Cargando carreras...</p>
+                </div>
+                
+                <!-- Lista de carreras -->
+                <div id="events-container" class="events-grid">
+                    <!-- Las carreras se cargarán dinámicamente aquí -->
+                </div>
+                
+                <!-- Mensaje cuando no hay resultados -->
+                <div id="no-results" class="no-results" style="display: none;">
+                    <p>No se encontraron carreras que coincidan con los filtros seleccionados.</p>
+                </div>
+                
+                <!-- Paginación -->
+                <div id="pagination" class="pagination">
+                    <!-- La paginación se cargará dinámicamente -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Cómo Funciona -->
+        <section id="como-funciona" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">¿Cómo Funciona?</h2>
+                <div class="steps-container">
+                    <div class="step">
+                        <div class="step-icon">1</div>
+                        <h3>Busca Carreras</h3>
+                        <p>Encuentra carreras por ubicación, fecha o distancia.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">2</div>
+                        <h3>Regístrate</h3>
+                        <p>Crea una cuenta para guardar tus carreras favoritas.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">3</div>
+                        <h3>Inscríbete</h3>
+                        <p>Completa tu inscripción en pocos pasos.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon">4</div>
+                        <h3>¡A Correr!</h3>
+                        <p>Prepara tus zapatillas y disfruta de la carrera.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Testimonios -->
+        <section id="testimonios" class="section">
+            <div class="container">
+                <h2 class="section-title">Lo que dicen nuestros corredores</h2>
+                <div class="testimonials-container">
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"Gracias a Athletic World encontré las mejores carreras en mi ciudad. ¡Muy fácil de usar!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Ana M.</h4>
+                                <p>Corredora desde 2018</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <p>"La mejor plataforma para encontrar carreras. Nunca me pierdo una competición."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <h4>Carlos R.</h4>
+                                <p>Maratonista</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Newsletter -->
+        <section id="newsletter" class="section bg-primary text-white">
+            <div class="container">
+                <div class="newsletter-content">
+                    <h2>¡No te pierdas ninguna carrera!</h2>
+                    <p>Suscríbete a nuestro boletín y recibe información actualizada sobre las próximas carreras populares en España.</p>
+                    <form id="newsletter-form" class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit" class="btn btn-white">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Athletic World</h3>
+                    <p>Tu portal de referencia para encontrar y participar en las mejores carreras populares de España.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#proximas-carreras">Carreras</a></li>
+                        <li><a href="#como-funciona">¿Cómo Funciona?</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@athleticworld.com</li>
+                        <li><i class="fas fa-phone"></i> +34 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Madrid, España</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Athletic World. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="dist/js/main.bundle.js"></script>
+</body>
+</html>

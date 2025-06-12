@@ -1,0 +1,57 @@
+/* src/styles/base/_variables.css */
+:root {
+  /* Colores */
+  --color-primary: #ff5722;
+  --color-primary-dark: #e64a19;
+  --color-secondary: #2196f3;
+  --color-secondary-dark: #1976d2;
+  --color-success: #4caf50;
+  --color-warning: #ff9800;
+  --color-danger: #f44336;
+  --color-light: #f5f5f5;
+  --color-dark: #212121;
+  --color-gray: #757575;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  
+  /* Tipografía */
+  --font-primary: 'Roboto', sans-serif;
+  --font-secondary: 'Montserrat', sans-serif;
+  --font-size-base: 1rem; /* 16px */
+  --line-height-base: 1.6;
+  
+  /* Espaciado */
+  --spacing-unit: 1rem;
+  --spacing-xs: calc(var(--spacing-unit) * 0.5);
+  --spacing-sm: var(--spacing-unit);
+  --spacing-md: calc(var(--spacing-unit) * 1.5);
+  --spacing-lg: calc(var(--spacing-unit) * 2);
+  --spacing-xl: calc(var(--spacing-unit) * 3);
+  
+  /* Bordes */
+  --border-radius: 4px;
+  --border-radius-sm: 2px;
+  --border-radius-lg: 8px;
+  --border-color: #e0e0e0;
+  
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Transiciones */
+  --transition-base: all 0.3s ease;
+  --transition-fade: opacity 0.3s ease;
+  --transition-slide: transform 0.3s ease;
+  
+  /* Breakpoints */
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  
+  /* Contenedor */
+  --container-max-width: 1200px;
+  --container-padding: 1.5rem;
+}
