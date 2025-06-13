@@ -87,8 +87,20 @@ export class EventCard {
           ${hasDiscount ? `
             <span class="price-discount">-${Math.round(((this.event.price.originalPrice - this.event.price.amount) / this.event.price.originalPrice) * 100)}%</span>
           ` : ''}
-      
+        </div>
+<div id="modal-${this.event.id}" class="race-modal-overlay" style="display: none;">
+  <div class="race-modal">
+    <button class="modal-close" onclick="eventModal.close('${this.event.id}')">Cerrar</button>
+    <div class="modal-content">
+      <h3>${this.event.name}</h3>
+      <p><strong>Fecha:</strong> ${this.formatFullDate(this.event.date)}</p>
+      <p><strong>Ubicación:</strong> ${this.getLocationText()}</p>
+      <p><strong>Distancia:</strong> ${this.event.distance} km</p>
+      <p><strong>Descripción:</strong> ${this.event.description || 'Sin descripción disponible.'}</p>
+    </div>
+  </div>
 </div>
+
       </div>
     `;
   }
