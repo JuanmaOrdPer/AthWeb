@@ -1,0 +1,223 @@
+/* Estilos base para el carrusel Splide */
+.splide {
+  position: relative;
+  padding: 2rem 0;
+  margin: 0 auto;
+  max-width: 1400px;
+}
+
+.splide__track {
+  overflow: visible;
+  padding: 1rem 0;
+}
+
+.splide__list {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.splide__slide {
+  flex: 0 0 auto;
+  position: relative;
+  padding: 0 1rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Contenedor de la tarjeta */
+.race-card-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Controles de navegación */
+.splide__arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.splide__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.splide__arrow--prev {
+  left: -24px;
+}
+
+.splide__arrow--next {
+  right: -24px;
+}
+
+.splide__arrow:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.splide__arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: translateY(-50%);
+}
+
+.splide__arrow:disabled:hover {
+  background: white;
+  color: var(--color-primary);
+}
+
+/* Paginación */
+.splide__pagination {
+  position: static;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.splide__pagination__page {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.splide__pagination__page:hover {
+  background: #aaa;
+  transform: scale(1.2);
+}
+
+.splide__pagination__page.is-active {
+  background: var(--color-primary);
+  transform: scale(1.2);
+}
+
+/* Ajustes para las tarjetas dentro del carrusel */
+.race-card {
+  height: 100%;
+  margin: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.race-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Modo oscuro */
+.dark-mode .splide__arrow {
+  background: var(--color-dark-light);
+  color: var(--color-white);
+}
+
+.dark-mode .splide__arrow:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.dark-mode .splide__pagination__page {
+  background: #444;
+}
+
+.dark-mode .splide__pagination__page:hover {
+  background: #666;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .splide {
+    padding: 2rem 1.5rem;
+  }
+  
+  .splide__arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  
+  .splide__arrow--prev {
+    left: -12px;
+  }
+  
+  .splide__arrow--next {
+    right: -12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .splide {
+    padding: 1.5rem 1rem;
+  }
+  
+  .splide__arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+  
+  .splide__pagination {
+    margin-top: 1rem;
+  }
+  
+  .splide__pagination__page {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Asegurar que las tarjetas tengan la misma altura */
+.splide__slide {
+  height: auto;
+  display: flex;
+}
+
+.race-card-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.race-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.race-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.race-footer {
+  margin-top: auto;
+}

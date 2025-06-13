@@ -3,16 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atletismo Mundial - Próximas Carreras Populares</title>
-    
-    <!-- Hojas de estilo -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Athletic World - Próximas Carreras Populares</title>
     
     <!-- Preload de fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Splide CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <!-- Los estilos serán inyectados automáticamente por Webpack -->
 </head>
 <body>
     <!-- Header -->
@@ -20,7 +24,10 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo">
-                    <a href="/">Athletic World</a>
+                    <a href="/">
+                        <i class="fas fa-running"></i>
+                        AthlCyl Race
+                    </a>
                 </div>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -40,23 +47,68 @@
     
     <!-- Contenido principal -->
     <main>
-        <section id="hero" class="hero">
+        <!-- Hero Section -->
+        <section id="inicio" class="hero">
             <div class="container">
                 <div class="hero-content">
-                    <h1>Descubre las Mejores Carreras Populares de España</h1>
-                    <p>Tu portal de referencia para encontrar e inscribirte en las próximas competiciones de atletismo por toda España</p>
+                    <div class="hero-badge">
+                        <i class="fas fa-medal"></i>
+                        Descubre las mejores carreras
+                    </div>
+                    <h1 class="hero-title">
+                        Encuentra tu próxima <span>carrera perfecta</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        La plataforma más completa para descubrir carreras populares, maratones y eventos de atletismo en España y el mundo
+                    </p>
                     <div class="hero-buttons">
-                        <a href="#proximas-carreras" class="btn btn-primary">Ver Próximas Carreras</a>
-                        <a href="#como-funciona" class="btn btn-secondary">¿Cómo Funciona?</a>
+                        <a href="#proximas-carreras" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Explorar Carreras
+                        </a>
+                        <a href="#como-funciona" class="btn btn-outline-white">
+                            <i class="fas fa-play"></i>
+                            ¿Cómo Funciona?
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500<span>+</span></div>
+                            <div class="stat-label">Carreras Disponibles</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50<span>+</span></div>
+                            <div class="stat-label">Ciudades</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K<span>+</span></div>
+                            <div class="stat-label">Corredores</div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- Fondo de hero -->
+            <div class="hero-bg-wrapper">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Corredores en carrera" class="hero-bg">
+            </div>
         </section>
         
-        <section id="proximas-carreras" class="section">
+        <!-- Sección de Próximas Carreras -->
+        <section id="proximas-carreras" class="section races-container">
             <div class="container">
-                <h2 class="section-title">Próximas Carreras Populares</h2>
-                <p class="section-description">Encuentra las mejores carreras populares de atletismo en España para los próximos meses. Desde carreras urbanas de 5K y 10K hasta maratones y trail running, aquí encontrarás toda la información necesaria para planificar tu calendario deportivo.</p>
+                <div class="section-header">
+                    <span class="section-subtitle">
+                        <i class="fas fa-calendar-alt"></i>
+                        Próximos Eventos
+                    </span>
+                    <h2 class="section-title">
+                        Próximas <span>Carreras Populares</span>
+                    </h2>
+                    <p class="section-description">
+                        Descubre las mejores carreras populares de atletismo en España y el mundo. 
+                        Desde carreras urbanas de 5K y 10K hasta maratones y trail running.
+                    </p>
+                </div>
                 
                 <!-- Filtros -->
                 <div id="filters-container" class="filters-container">
@@ -70,81 +122,164 @@
                 </div>
                 
                 <!-- Lista de carreras -->
-                <div id="events-container" class="events-grid">
+                <div id="events-container" class="races-grid">
                     <!-- Las carreras se cargarán dinámicamente aquí -->
                 </div>
                 
                 <!-- Mensaje cuando no hay resultados -->
                 <div id="no-results" class="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron carreras</h3>
                     <p>No se encontraron carreras que coincidan con los filtros seleccionados.</p>
+                    <button class="btn" onclick="app.clearFilters()">
+                        <i class="fas fa-redo"></i>
+                        Limpiar Filtros
+                    </button>
                 </div>
                 
                 <!-- Paginación -->
-                <div id="pagination" class="pagination">
+                <div id="pagination" class="pagination-container">
                     <!-- La paginación se cargará dinámicamente -->
                 </div>
             </div>
         </section>
         
         <!-- Sección de Cómo Funciona -->
-        <section id="como-funciona" class="section bg-light">
+        <section id="como-funciona" class="section features-section">
             <div class="container">
-                <h2 class="section-title">¿Cómo Funciona?</h2>
-                <div class="steps-container">
-                    <div class="step">
-                        <div class="step-icon">1</div>
-                        <h3>Busca Carreras</h3>
-                        <p>Encuentra carreras por ubicación, fecha o distancia.</p>
+                <div class="section-header">
+                    <span class="section-subtitle">Proceso Simple</span>
+                    <h2 class="section-title">¿Cómo Funciona?</h2>
+                    <p class="section-description">
+                        Encontrar y participar en carreras nunca ha sido tan fácil. 
+                        Sigue estos simples pasos para comenzar tu aventura.
+                    </p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3 class="feature-title">1. Busca Carreras</h3>
+                        <p class="feature-description">
+                            Utiliza nuestros filtros avanzados para encontrar carreras por ubicación, 
+                            fecha, distancia y tipo de terreno.
+                        </p>
                     </div>
-                    <div class="step">
-                        <div class="step-icon">2</div>
-                        <h3>Regístrate</h3>
-                        <p>Crea una cuenta para guardar tus carreras favoritas.</p>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3 class="feature-title">2. Guarda Favoritas</h3>
+                        <p class="feature-description">
+                            Crea una lista de carreras favoritas y recibe notificaciones 
+                            sobre fechas de inscripción y actualizaciones.
+                        </p>
                     </div>
-                    <div class="step">
-                        <div class="step-icon">3</div>
-                        <h3>Inscríbete</h3>
-                        <p>Completa tu inscripción en pocos pasos.</p>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 class="feature-title">3. Inscríbete Fácil</h3>
+                        <p class="feature-description">
+                            Accede directamente a la página oficial de inscripción 
+                            con toda la información necesaria.
+                        </p>
                     </div>
-                    <div class="step">
-                        <div class="step-icon">4</div>
-                        <h3>¡A Correr!</h3>
-                        <p>Prepara tus zapatillas y disfruta de la carrera.</p>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="feature-title">4. ¡A Correr!</h3>
+                        <p class="feature-description">
+                            Prepárate para tu carrera con nuestros consejos de entrenamiento 
+                            y disfruta de la experiencia.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
         
         <!-- Sección de Testimonios -->
-        <section id="testimonios" class="section">
+        <section id="testimonios" class="section testimonials-section">
             <div class="container">
-                <h2 class="section-title">Lo que dicen nuestros corredores</h2>
-                <div class="testimonials-container">
-                    <div class="testimonial">
+                <div class="testimonials-header">
+                    <span class="section-subtitle">Testimonios</span>
+                    <h2 class="section-title">
+                        Lo que dicen nuestros <span>corredores</span>
+                    </h2>
+                    <p class="section-description">
+                        Miles de corredores ya confían en nosotros para encontrar sus carreras perfectas.
+                    </p>
+                </div>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
                         <div class="testimonial-content">
-                            <p>"Gracias a Athletic World encontré las mejores carreras en mi ciudad. ¡Muy fácil de usar!"</p>
+                            <p>"Increíble plataforma. He encontrado las mejores carreras de trail running en mi zona. La información es muy completa y actualizada."</p>
                         </div>
                         <div class="testimonial-author">
                             <div class="author-avatar">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="author-info">
-                                <h4>Ana M.</h4>
-                                <p>Corredora desde 2018</p>
+                                <div class="author-name">María González</div>
+                                <div class="author-role">Trail Runner</div>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial">
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
                         <div class="testimonial-content">
-                            <p>"La mejor plataforma para encontrar carreras. Nunca me pierdo una competición."</p>
+                            <p>"Gracias a Athletic World pude encontrar mi primera maratón. El proceso de búsqueda es muy intuitivo y fácil de usar."</p>
                         </div>
                         <div class="testimonial-author">
                             <div class="author-avatar">
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="author-info">
-                                <h4>Carlos R.</h4>
-                                <p>Maratonista</p>
+                                <div class="author-name">Carlos Rodríguez</div>
+                                <div class="author-role">Maratonista</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                            <i class="fas fa-star star"></i>
+                        </div>
+                        <div class="testimonial-content">
+                            <p>"La mejor herramienta para corredores. Siempre encuentro carreras interesantes y la comunidad es fantástica."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="author-info">
+                                <div class="author-name">Ana Martín</div>
+                                <div class="author-role">Corredora Amateur</div>
                             </div>
                         </div>
                     </div>
@@ -153,15 +288,30 @@
         </section>
         
         <!-- Sección de Newsletter -->
-        <section id="newsletter" class="section bg-primary text-white">
+        <section id="newsletter" class="section newsletter-section">
             <div class="container">
-                <div class="newsletter-content">
-                    <h2>¡No te pierdas ninguna carrera!</h2>
-                    <p>Suscríbete a nuestro boletín y recibe información actualizada sobre las próximas carreras populares en España.</p>
+                <div class="newsletter-container">
+                    <div class="newsletter-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h2 class="section-title">¡No te pierdas ninguna carrera!</h2>
+                    <p class="section-description">
+                        Suscríbete a nuestro boletín y recibe información actualizada sobre las próximas carreras populares y eventos especiales.
+                    </p>
                     <form id="newsletter-form" class="newsletter-form">
-                        <input type="email" placeholder="Tu correo electrónico" required>
-                        <button type="submit" class="btn btn-white">Suscribirse</button>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Tu correo electrónico" required>
+                        </div>
+                        <button type="submit" class="btn-subscribe">
+                            Suscribirse
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
                     </form>
+                    <div class="newsletter-message" id="newsletter-message"></div>
+                    <p class="privacy-text">
+                        Al suscribirte, aceptas nuestra <a href="#">política de privacidad</a>. 
+                        Puedes darte de baja en cualquier momento.
+                    </p>
                 </div>
             </div>
         </section>
@@ -169,47 +319,9 @@
     
     <!-- Footer -->
     <footer id="footer" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <h3>Athletic World</h3>
-                    <p>Tu portal de referencia para encontrar y participar en las mejores carreras populares de España.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#proximas-carreras">Carreras</a></li>
-                        <li><a href="#como-funciona">¿Cómo Funciona?</a></li>
-                        <li><a href="#testimonios">Testimonios</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contacto</h4>
-                    <ul>
-                        <li><i class="fas fa-envelope"></i> info@athleticworld.com</li>
-                        <li><i class="fas fa-phone"></i> +34 123 456 789</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Madrid, España</li>
-                    </ul>
-                </div>
-                <div class="footer-social">
-                    <h4>Síguenos</h4>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Athletic World. Todos los derechos reservados.</p>
-            </div>
-        </div>
+        <!-- El footer se cargará dinámicamente -->
     </footer>
     
-    <!-- Scripts -->
-    <script src="dist/js/main.bundle.js"></script>
+    <!-- Los scripts serán inyectados automáticamente por Webpack -->
 </body>
 </html>

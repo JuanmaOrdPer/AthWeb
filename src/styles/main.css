@@ -1,31 +1,63 @@
-/* src/styles/main.css */
 /* ==========================================================================
-   #BASE
+   ATHLETIC WORLD - MAIN STYLES (COMPILADO)
    ========================================================================== */
-@import "base/_variables.css";
-@import "base/_reset.css";
-@import "base/_typography.css";
+   
+/* Importar estilos base */
+@import 'base/_variables';
+@import 'base/_reset';
+@import 'base/_typography';
 
-/* ==========================================================================
-   #LAYOUT
-   ========================================================================== */
-@import "layout/_header.css";
-@import "layout/_footer.css";
+/* Importar estilos de layout */
+@import 'layout/_header';
+@import 'layout/_footer';
 
-/* ==========================================================================
-   #COMPONENTS
-   ========================================================================== */
-@import "components/_buttons.css";
-@import "components/_cards.css";
-@import "components/_carousel.css";
-@import "components/_contact.css";
-@import "components/_features.css";
-@import "components/_filters.css";
-@import "components/_footer.css";
-@import "components/_gallery.css";
-@import "components/_hero.css";
-@import "components/_map.css";
-@import "components/_newsletter.css";
-@import "components/_race-cards.css";
-@import "components/_stats.css";
-@import "components/_testimonials.css";
+/* Importar componentes */
+@import 'components/_buttons';
+@import 'components/_carousel';
+@import 'components/_contact';
+@import 'components/_features';
+@import 'components/_filters';
+@import 'components/_footer';
+@import 'components/_gallery';
+@import 'components/_hero';
+@import 'components/_map';
+@import 'components/_newsletter';
+@import 'components/_race-cards';
+@import 'components/_splide-carousel';
+@import 'components/_stats';
+@import 'components/_testimonials';
+
+/* Utilidades globales */
+.container {
+  max-width: var(--container-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 var(--container-padding, 1.5rem);
+  width: 100%;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+/* Utilidades de texto */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* Utilidades de color */
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-success { color: var(--color-success); }
+.text-warning { color: var(--color-warning); }
+.text-danger { color: var(--color-danger); }
+.text-muted { color: var(--color-gray); }
+
+/* Utilidades de fondo */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-success { background-color: var(--color-success); }
+.bg-warning { background-color: var(--color-warning); }
+.bg-danger { background-color: var(--color-danger); }
+.bg-light { background-color: var(--color-light); }
+.bg-dark { background-color: var(--color-dark); }
+.bg-white { background-color: var(--color-white); }
